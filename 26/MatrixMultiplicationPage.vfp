@@ -1,0 +1,43 @@
+<apex:page controller="MatrixMultiplicationController">
+    <h1>Matrix Multiplication (2x2)</h1>
+
+    <apex:form>
+        <apex:pageMessages />
+
+        <!-- Input Block -->
+        <apex:pageBlock title="Enter Matrix Values">
+
+            <!-- Matrix A -->
+            <apex:pageBlockSection title="Matrix A" columns="2">
+                <apex:inputText label="A[0][0]" value="{!a00}" />
+                <apex:inputText label="A[0][1]" value="{!a01}" />
+                <apex:inputText label="A[1][0]" value="{!a10}" />
+                <apex:inputText label="A[1][1]" value="{!a11}" />
+            </apex:pageBlockSection>
+
+            <!-- Matrix B -->
+            <apex:pageBlockSection title="Matrix B" columns="2">
+                <apex:inputText label="B[0][0]" value="{!b00}" />
+                <apex:inputText label="B[0][1]" value="{!b01}" />
+                <apex:inputText label="B[1][0]" value="{!b10}" />
+                <apex:inputText label="B[1][1]" value="{!b11}" />
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection>
+                <apex:commandButton value="Multiply Matrices" action="{!multiplyMatrices}" rerender="resultBlock" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <!-- Result Block -->
+        <apex:outputPanel id="resultBlock">
+            <apex:pageBlock title="Result Matrix (A * B)" rendered="{!showResult}">
+                <apex:pageBlockSection columns="2">
+                    <apex:outputText label="Result[0][0]" value="{!r00}" />
+                    <apex:outputText label="Result[0][1]" value="{!r01}" />
+                    <apex:outputText label="Result[1][0]" value="{!r10}" />
+                    <apex:outputText label="Result[1][1]" value="{!r11}" />
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

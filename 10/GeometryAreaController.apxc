@@ -1,0 +1,46 @@
+public class GeometryAreaController {
+    public String shape { get; set; }
+    public Decimal radius { get; set; }
+    public Decimal length { get; set; }
+    public Decimal width { get; set; }
+    public Decimal baseLength { get; set; }
+    public Decimal height { get; set; }
+    public String result { get; set; }
+
+    // Define shape options
+    public List<SelectOption> getShapeOptions() {
+        List<SelectOption> options = new List<SelectOption>();
+        options.add(new SelectOption('','-- Select Shape --'));
+        options.add(new SelectOption('Circle', 'Circle'));
+        options.add(new SelectOption('Rectangle', 'Rectangle'));
+        options.add(new SelectOption('Triangle', 'Triangle'));
+        return options;
+    }
+
+    public void calculateArea() {
+        if (shape == 'Circle') {
+            if (radius != null && radius > 0) {
+                Decimal area = Math.PI * radius * radius;
+                result = 'Area of Circle: ' + area;
+            } else {
+                result = 'Please enter a valid radius.';
+            }
+        } else if (shape == 'Rectangle') {
+            if (length != null && width != null && length > 0 && width > 0) {
+                Decimal area = length * width;
+                result = 'Area of Rectangle: ' + area;
+            } else {
+                result = 'Please enter valid length and width.';
+            }
+        } else if (shape == 'Triangle') {
+            if (baseLength != null && height != null && baseLength > 0 && height > 0) {
+                Decimal area = 0.5 * baseLength * height;
+                result = 'Area of Triangle: ' + area;
+            } else {
+                result = 'Please enter valid base length and height.';
+            }
+        } else {
+            result = 'Please select a valid shape.';
+        }
+    }
+}

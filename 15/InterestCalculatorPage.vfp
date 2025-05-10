@@ -1,0 +1,29 @@
+<apex:page controller="InterestCalculatorController">
+    <h1>Simple & Compound Interest Calculator</h1>
+
+    <apex:form>
+        <apex:pageMessages />
+
+        <apex:pageBlock title="Input Details">
+            <apex:pageBlockSection columns="2">
+                <apex:inputText label="Principal Amount (P)" value="{!principal}" />
+                <apex:inputText label="Rate of Interest (R%)" value="{!rate}" />
+                <apex:inputText label="Time (T in years)" value="{!time}" />
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection>
+                <apex:commandButton value="Calculate" action="{!calculateInterest}" rerender="resultsBlock" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <apex:outputPanel id="resultsBlock">
+            <apex:pageBlock title="Results" rendered="{!showResults}">
+                <apex:pageBlockSection>
+                    <apex:outputText value="Simple Interest: {!simpleInterest}" />
+                    <br/>
+                    <apex:outputText value="Compound Interest: {!compoundInterest}" />
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,50 @@
+<apex:page controller="Calculator">
+    <apex:sectionHeader title="Calculator" subtitle="Scientific Calculator"/>
+    <apex:form>
+        <apex:pageBlock title="Enter Numbers">
+
+            <!-- Number Inputs -->
+            <apex:pageBlockSection columns="2">
+                <apex:inputText label="First Number" html-placeholder="e.g. 5" value="{!firstnumber}"/>
+                <apex:inputText label="Second Number" html-placeholder="e.g. 10" value="{!secondnumber}"/>
+            </apex:pageBlockSection>
+
+            <!-- Basic Operations -->
+            <apex:pageBlockSection title="Basic Operations" columns="3">
+                <apex:commandButton value="Add" action="{!Addition}" reRender="res"/>
+                <apex:commandButton value="Subtract" action="{!Subtraction}" reRender="res"/>
+                <apex:commandButton value="Multiply" action="{!Multiplication}" reRender="res"/>
+                <apex:commandButton value="Divide" action="{!Division}" reRender="res"/>
+                <apex:commandButton value="Modulus" action="{!Modulus}" reRender="res"/>
+                <apex:commandButton value="Power (Carat)" action="{!power}" reRender="res"/>
+            </apex:pageBlockSection>
+
+            <!-- Square, Cube, Square Root -->
+            <apex:pageBlockSection title="Squares, Cubes & Roots" columns="2">
+                <apex:commandButton value="Square Num1" action="{!square1}" reRender="res"/>
+                <apex:commandButton value="Square Num2" action="{!square2}" reRender="res"/>
+                <apex:commandButton value="Cube Num1" action="{!cube1}" reRender="res"/>
+                <apex:commandButton value="Cube Num2" action="{!cube2}" reRender="res"/>
+                <apex:commandButton value="Sqrt Num1" action="{!square_root1}" reRender="res"/>
+                <apex:commandButton value="Sqrt Num2" action="{!square_root2}" reRender="res"/>
+            </apex:pageBlockSection>
+
+            <!-- Logarithmic -->
+            <apex:pageBlockSection title="Logarithmic Operations" columns="2">
+                <apex:commandButton value="Log Num1" action="{!log1}" reRender="res"/>
+                <apex:commandButton value="Log Num2" action="{!log2}" reRender="res"/>
+            </apex:pageBlockSection>
+
+            <!-- Result Display -->
+            <apex:pageBlockSection columns="1" title="Result">
+                <apex:outputText value="Answer: {!result}" id="res" style="font-weight:bold; font-size:16px; color:green;"/>
+            </apex:pageBlockSection>
+
+            <!-- Clear Button -->
+            <apex:pageBlockSection columns="1">
+                <apex:commandButton value="Clear All" action="{!clearAll}" reRender="res"/>
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

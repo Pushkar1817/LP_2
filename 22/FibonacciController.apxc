@@ -1,0 +1,32 @@
+public class FibonacciController {
+    public Integer numTerms { get; set; }
+    public String result { get; private set; }
+    public Boolean showResult { get; private set; }
+
+    public FibonacciController() {
+        showResult = false;
+    }
+
+    public void generateFibonacci() {
+        if (numTerms == null || numTerms <= 0) {
+            result = 'Please enter a positive integer.';
+            showResult = true;
+            return;
+        }
+
+        List<Integer> fib = new List<Integer>();
+
+        Integer a = 0;
+        Integer b = 1;
+
+        for (Integer i = 0; i < numTerms; i++) {
+            fib.add(a);
+            Integer next = a + b;
+            a = b;
+            b = next;
+        }
+
+        result = 'Fibonacci Series (' + numTerms + ' terms): ' + String.join(fib, ', ');
+        showResult = true;
+    }
+}

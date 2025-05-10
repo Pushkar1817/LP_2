@@ -1,0 +1,26 @@
+public class ArrayAdditionController {
+    public String array1Input { get; set; }
+    public String array2Input { get; set; }
+    public String result { get; set; }
+
+    public void addArrays() {
+        List<String> arr1Str = array1Input != null ? array1Input.split(',') : new List<String>();
+        List<String> arr2Str = array2Input != null ? array2Input.split(',') : new List<String>();
+
+        Integer len = Math.min(arr1Str.size(), arr2Str.size());
+        List<Integer> resultList = new List<Integer>();
+
+        for (Integer i = 0; i < len; i++) {
+            try {
+                Integer a = Integer.valueOf(arr1Str[i].trim());
+                Integer b = Integer.valueOf(arr2Str[i].trim());
+                resultList.add(a + b);
+            } catch (Exception e) {
+                result = 'Error: Invalid number at position ' + (i + 1);
+                return;
+            }
+        }
+
+        result = 'Result: ' + String.join(resultList, ', ');
+    }
+}

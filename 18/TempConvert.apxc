@@ -1,0 +1,32 @@
+public class TempConvert {
+
+    public Double celsius { get; set; }
+    public Double fahrenheit { get; set; }
+    public String result { get; set; }
+
+    public TempConvert() {
+        celsius = null;
+        fahrenheit = null;
+        result = '';
+    }
+
+    // Convert Celsius to Fahrenheit
+    public void convertToFahrenheit() {
+        if (celsius == null) {
+            result = 'Please enter Celsius temperature!';
+            return;
+        }
+        fahrenheit = (celsius * 9/5) + 32;
+        result = celsius + ' °C = ' + fahrenheit + ' °F';
+    }
+
+    // Convert Fahrenheit to Celsius
+    public void convertToCelsius() {
+        if (fahrenheit == null) {
+            result = 'Please enter Fahrenheit temperature!';
+            return;
+        }
+        celsius = (fahrenheit - 32) * 5/9;
+        result = fahrenheit + ' °F = ' + celsius + ' °C';
+    }
+}

@@ -1,0 +1,41 @@
+<apex:page controller="GeometryAreaController">
+    <apex:form>
+        <apex:pageBlock title="Geometry Area Calculation">
+            <apex:pageBlockSection>
+                <apex:selectList value="{!shape}" size="1">
+                    <apex:selectOptions value="{!shapeOptions}"/>
+                    <apex:actionSupport event="onchange" reRender="inputFields"/>
+                </apex:selectList>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection id="inputFields">
+                <apex:facet name="label">Enter Geometry Parameters</apex:facet>
+
+                <apex:outputPanel rendered="{!IF(shape == 'Circle', true, false)}">
+                    <apex:outputLabel value="Enter radius of Circle" for="radius"/>
+                    <apex:inputText id="radius" value="{!radius}"/>
+                </apex:outputPanel>
+
+                <apex:outputPanel rendered="{!IF(shape == 'Rectangle', true, false)}">
+                    <apex:outputLabel value="Enter length of Rectangle" for="length"/>
+                    <apex:inputText id="length" value="{!length}"/>
+                    <apex:outputLabel value="Enter width of Rectangle" for="width"/>
+                    <apex:inputText id="width" value="{!width}"/>
+                </apex:outputPanel>
+
+                <apex:outputPanel rendered="{!IF(shape == 'Triangle', true, false)}">
+                    <apex:outputLabel value="Enter base length of Triangle" for="baseLength"/>
+                    <apex:inputText id="baseLength" value="{!baseLength}"/>
+                    <apex:outputLabel value="Enter height of Triangle" for="height"/>
+                    <apex:inputText id="height" value="{!height}"/>
+                </apex:outputPanel>
+
+                <apex:commandButton value="Calculate Area" action="{!calculateArea}" reRender="resultSection"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection id="resultSection">
+                <apex:outputText value="{!result}" style="font-weight:bold;"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

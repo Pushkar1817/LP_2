@@ -1,0 +1,33 @@
+public class MatrixAdditionController {
+    // Matrix A
+    public Integer a00 { get; set; }
+    public Integer a01 { get; set; }
+    public Integer a10 { get; set; }
+    public Integer a11 { get; set; }
+
+    // Matrix B
+    public Integer b00 { get; set; }
+    public Integer b01 { get; set; }
+    public Integer b10 { get; set; }
+    public Integer b11 { get; set; }
+
+    // Result Matrix
+    public Integer r00 { get; private set; }
+    public Integer r01 { get; private set; }
+    public Integer r10 { get; private set; }
+    public Integer r11 { get; private set; }
+
+    public Boolean showResult { get; private set; }
+
+    public MatrixAdditionController() {
+        showResult = false;
+    }
+
+    public void addMatrices() {
+        r00 = a00 + b00;
+        r01 = a01 + b01;
+        r10 = a10 + b10;
+        r11 = a11 + b11;
+        showResult = true;
+    }
+}

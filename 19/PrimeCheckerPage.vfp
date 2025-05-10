@@ -1,0 +1,24 @@
+<apex:page controller="PrimeCheckerController">
+    <h1>Prime Number Checker</h1>
+
+    <apex:form>
+        <apex:pageMessages />
+
+        <apex:pageBlock title="Enter a Number">
+            <apex:pageBlockSection>
+                <apex:inputText label="Number" value="{!inputNumber}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection>
+                <apex:commandButton value="Check Prime" action="{!checkPrime}" rerender="resultBlock" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <apex:outputPanel id="resultBlock">
+            <apex:pageBlock title="Result" rendered="{!hasResult}">
+                <apex:pageBlockSection>
+                    <apex:outputText value="{!result}" />
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

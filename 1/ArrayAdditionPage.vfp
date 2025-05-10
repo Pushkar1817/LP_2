@@ -1,0 +1,14 @@
+<apex:page controller="ArrayAdditionController">
+    <apex:form>
+        <apex:pageBlock title="Array Addition">
+            <apex:pageBlockSection>
+                <apex:inputText label="Enter first array (comma-separated)" value="{!array1Input}" size="60"/>
+                <apex:inputText label="Enter second array (comma-separated)" value="{!array2Input}" size="60"/>
+                <apex:commandButton value="Add Arrays" action="{!addArrays}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection>
+                <apex:outputText value="{!result}" style="font-weight:bold;"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

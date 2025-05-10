@@ -1,0 +1,46 @@
+public class CurrencyConverter {
+
+    public String fromCurrency { get; set; }
+    public String toCurrency { get; set; }
+    public Double amount { get; set; }
+    public Double convertedAmount { get; set; }
+
+    // Conversion Rates Map
+    Map<String, Double> conversionRate = new Map<String, Double>{
+        'INR-USD' => 0.012,
+        'USD-INR' => 83.38,
+        'INR-Pound' => 0.0096,
+        'Pound-INR' => 104.63,
+        'USD-Pound' => 0.80,
+        'Pound-USD' => 1.25
+    };
+
+    // List of currency options for picklist
+    public List<SelectOption> getCurrencyOptions() {
+        return new List<SelectOption>{
+            new SelectOption('INR', 'INR (Indian Rupee)'),
+            new SelectOption('USD', 'USD (US Dollar)'),
+            new SelectOption('Pound', 'Pound (British Pound)')
+        };
+    }
+
+    // Method to convert currency
+    public void convertCurrency() {
+        String conversionKey = fromCurrency + '-' + toCurrency;
+
+        if (conversionRate.containsKey(conversionKey)) {
+            convertedAmount = amount * conversionRate.get(conversionKey);
+        } else {
+            convertedAmount = null;
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Conversion rate not found!'));
+        }
+    }
+
+    // Method to show available rates in debug (for practical viva)
+    public void showAvailableRates() {
+        System.debug('Available Currency Conversions:');
+        for (String curr : conversionRate.keySet()) {
+            System.debug(curr + ' : ' + conversionRate.get(curr));
+        }
+    }
+}

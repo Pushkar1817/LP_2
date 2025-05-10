@@ -1,0 +1,44 @@
+<apex:page controller="CurrencyConverter">
+    <apex:sectionHeader title="Currency Converter" subtitle="Convert Between INR, USD & Pound"/>
+    <apex:form >
+
+        <!-- Show Messages -->
+        <apex:pageMessages />
+
+        <apex:pageBlock title="Currency Conversion">
+
+            <!-- Inputs Section -->
+            <apex:pageBlockSection columns="2">
+
+                <!-- From Currency Picklist -->
+                <apex:selectList label="From Currency" value="{!fromCurrency}" size="1">
+                    <apex:selectOptions value="{!currencyOptions}"/>
+                </apex:selectList>
+
+                <!-- To Currency Picklist -->
+                <apex:selectList label="To Currency" value="{!toCurrency}" size="1">
+                    <apex:selectOptions value="{!currencyOptions}"/>
+                </apex:selectList>
+
+                <!-- Amount -->
+                <apex:inputText label="Enter Amount" value="{!amount}" html-placeholder="e.g. 100"/>
+
+            </apex:pageBlockSection>
+
+            <!-- Convert Button -->
+            <apex:pageBlockSection columns="1">
+                <apex:commandButton value="Convert" action="{!convertCurrency}" reRender="result"/>
+            </apex:pageBlockSection>
+
+            <!-- Result -->
+            <apex:pageBlockSection columns="1" id="result">
+                <apex:outputPanel rendered="{!NOT(ISNULL(convertedAmount))}">
+                    <apex:outputText value="Converted Amount: {!convertedAmount}" 
+                                     style="font-weight:bold; font-size:16px; color:green;"/>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+
+    </apex:form>
+</apex:page>

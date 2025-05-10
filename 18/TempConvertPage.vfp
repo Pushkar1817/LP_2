@@ -1,0 +1,22 @@
+<apex:page controller="TempConvert">
+    <apex:sectionHeader title="Temperature Converter" subtitle="Convert Celsius ↔ Fahrenheit"/>
+    <apex:form >
+        <apex:pageBlock title="Temperature Conversion">
+
+            <apex:pageBlockSection columns="2">
+                <!-- Input for Celsius -->
+                <apex:inputText label="Enter Temperature in °C" value="{!celsius}" />
+                <apex:commandButton value="Convert to °F" action="{!convertToFahrenheit}" reRender="res" />
+
+                <!-- Input for Fahrenheit -->
+                <apex:inputText label="Enter Temperature in °F" value="{!fahrenheit}" />
+                <apex:commandButton value="Convert to °C" action="{!convertToCelsius}" reRender="res" />
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection columns="1">
+                <apex:outputText label="Result" value="{!result}" id="res" style="font-weight:bold; font-size:16px;"/>
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

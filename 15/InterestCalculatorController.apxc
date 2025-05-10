@@ -1,0 +1,30 @@
+public class InterestCalculatorController {
+    public Decimal principal { get; set; }
+    public Decimal rate { get; set; }
+    public Decimal time { get; set; }
+
+    public Decimal simpleInterest { get; private set; }
+    public Decimal compoundInterest { get; private set; }
+
+    public Boolean showResults { get; private set; }
+
+    public InterestCalculatorController() {
+        principal = 0;
+        rate = 0;
+        time = 0;
+        showResults = false;
+    }
+
+    public void calculateInterest() {
+        if (principal <= 0 || rate <= 0 || time <= 0) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'All input values must be greater than 0.'));
+            showResults = false;
+            return;
+        }
+
+        simpleInterest = (principal * rate * time) / 100;
+        Decimal amount = principal * Math.pow((1 + rate / 100), time);
+        compoundInterest = amount - principal;
+        showResults = true;
+    }
+}

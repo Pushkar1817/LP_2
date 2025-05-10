@@ -1,0 +1,33 @@
+public class PrimeCheckerController {
+    public Integer inputNumber { get; set; }
+    public String result { get; private set; }
+    public Boolean hasResult { get; private set; }
+
+    public PrimeCheckerController() {
+        hasResult = false;
+    }
+
+    public void checkPrime() {
+        if (inputNumber == null || inputNumber < 2) {
+            result = 'Please enter a number greater than 1.';
+            hasResult = true;
+            return;
+        }
+
+        Boolean isPrime = true;
+        for (Integer i = 2; i <= Math.sqrt(inputNumber); i++) {
+            if (Math.mod(inputNumber, i) == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime) {
+            result = inputNumber + ' is a Prime Number.';
+        } else {
+            result = inputNumber + ' is NOT a Prime Number.';
+        }
+
+        hasResult = true;
+    }
+}
