@@ -36,7 +36,7 @@ public class CurrencyConverter {
         }
     }
 
-    // Method to show available rates in debug (for practical viva)
+    // Method to show available rates in debug 
     public void showAvailableRates() {
         System.debug('Available Currency Conversions:');
         for (String curr : conversionRate.keySet()) {
