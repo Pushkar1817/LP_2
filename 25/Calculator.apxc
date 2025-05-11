@@ -1,59 +1,148 @@
-public class Calculator{
-    public double firstnumber{get;set;}
-    public double secondnumber{get;set;}
-    public double result{get;set;}
-    
-    public void Addition(){
+public class Calculator {
+    public Double firstnumber { get; set; }
+    public Double secondnumber { get; set; }
+    public Double result { get; set; }
+    public String operationName { get; set; }
+
+    public List<String> history { get; set; }
+
+    public Calculator() {
+        history = new List<String>();
+    }
+
+    private void log(String opName, String message) {
+        operationName = opName;
+        if (result != null)
+            history.add(message + ' = ' + result);
+        else
+            history.add(message + ' = Invalid');
+    }
+
+    public void Addition() {
         result = firstnumber + secondnumber;
-  
+        log('Addition', 'Addition of ' + firstnumber + ' and ' + secondnumber);
     }
-    public void Subtraction(){
+
+    public void Subtraction() {
         result = firstnumber - secondnumber;
+        log('Subtraction', 'Subtraction of ' + firstnumber + ' and ' + secondnumber);
     }
-    public void Multiplication(){
+
+    public void Multiplication() {
         result = firstnumber * secondnumber;
+        log('Multiplication', 'Multiplication of ' + firstnumber + ' and ' + secondnumber);
     }
-    public void Division(){
-        result = firstnumber / secondnumber;
+
+    public void Division() {
+        result = (secondnumber != 0) ? firstnumber / secondnumber : null;
+        log('Division', 'Division of ' + firstnumber + ' by ' + secondnumber);
     }
-    public void Modulus(){
-        result = math.mod(firstnumber.intValue(),secondnumber.intValue());
+
+    public void Modulus() {
+        result = Math.mod(firstnumber.intValue(), secondnumber.intValue());
+        log('Modulus', 'Modulus of ' + firstnumber + ' % ' + secondnumber);
     }
-    public void power(){
-        result = math.pow(firstnumber,secondnumber);
+
+    public void power() {
+        result = Math.pow(firstnumber, secondnumber);
+        log('Power', firstnumber + ' ^ ' + secondnumber);
     }
-    public void square_root1(){
-        result = math.sqrt(firstnumber);
+
+    public void square_root1() {
+        result = Math.sqrt(firstnumber);
+        log('Square Root', 'Square root of ' + firstnumber);
     }
-    public void square_root2(){
-        result = math.sqrt(secondnumber);
+
+    public void square_root2() {
+        result = Math.sqrt(secondnumber);
+        log('Square Root', 'Square root of ' + secondnumber);
     }
-    public void square1(){
+
+    public void square1() {
         result = firstnumber * firstnumber;
+        log('Square', 'Square of ' + firstnumber);
     }
-    public void square2(){
+
+    public void square2() {
         result = secondnumber * secondnumber;
+        log('Square', 'Square of ' + secondnumber);
     }
-    public void cube1() {
-    	result = Math.pow(firstnumber, 3);
+
+    public void sine1() {
+        result = Math.sin(firstnumber * Math.PI / 180);
+        log('Sine', 'Sine of ' + firstnumber + '°');
     }
-    
-    public void cube2() {
-        result = Math.pow(secondnumber, 3);
+
+    public void sine2() {
+        result = Math.sin(secondnumber * Math.PI / 180);
+        log('Sine', 'Sine of ' + secondnumber + '°');
     }
-    
+
+    public void cosine1() {
+        result = Math.cos(firstnumber * Math.PI / 180);
+        log('Cosine', 'Cosine of ' + firstnumber + '°');
+    }
+
+    public void cosine2() {
+        result = Math.cos(secondnumber * Math.PI / 180);
+        log('Cosine', 'Cosine of ' + secondnumber + '°');
+    }
+
+    public void tangent1() {
+        result = Math.tan(firstnumber * Math.PI / 180);
+        log('Tangent', 'Tangent of ' + firstnumber + '°');
+    }
+
+    public void tangent2() {
+        result = Math.tan(secondnumber * Math.PI / 180);
+        log('Tangent', 'Tangent of ' + secondnumber + '°');
+    }
+
     public void log1() {
-        result = Math.log(firstnumber);
+        result = (firstnumber > 0) ? Math.log(firstnumber) / Math.log(10) : null;
+        log('Log', 'Log base 10 of ' + firstnumber);
     }
-    
+
     public void log2() {
-        result = Math.log(secondnumber);
+        result = (secondnumber > 0) ? Math.log(secondnumber) / Math.log(10) : null;
+        log('Log', 'Log base 10 of ' + secondnumber);
     }
 
-    public void clearAll() {
-        firstnumber = 0;
-        secondnumber = 0;
-        result = 0;
-	}
+    public void ln1() {
+        result = (firstnumber > 0) ? Math.log(firstnumber) : null;
+        log('Ln', 'Ln of ' + firstnumber);
+    }
 
+    public void ln2() {
+        result = (secondnumber > 0) ? Math.log(secondnumber) : null;
+        log('Ln', 'Ln of ' + secondnumber);
+    }
+
+    public void exp1() {
+        result = Math.exp(firstnumber);
+        log('Exponential', 'e^' + firstnumber);
+    }
+
+    public void exp2() {
+        result = Math.exp(secondnumber);
+        log('Exponential', 'e^' + secondnumber);
+    }
+
+    public void abs1() {
+        result = Math.abs(firstnumber);
+        log('Absolute', 'Absolute of ' + firstnumber);
+    }
+
+    public void abs2() {
+        result = Math.abs(secondnumber);
+        log('Absolute', 'Absolute of ' + secondnumber);
+    }
+
+    public void reset() {
+        firstnumber = null;
+        secondnumber = null;
+        result = null;
+        operationName = null;
+        history.clear();
+    }
 }
