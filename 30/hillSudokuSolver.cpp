@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <cstdlib>
-#include <ctime>
-#include <algorithm>
-
+#include<bits/stdc++.h>
 using namespace std;
 
 class SudokuSolver {
@@ -126,11 +121,15 @@ public:
         collectNonFixedColumns();
     }
 
-    void solve() {
-        while (true) {
+    void solve(int maxRestarts = 10000) {
+        for (int attempt = 1; attempt <= maxRestarts; ++attempt) {
             randomInitialize();
-            if (hillClimb()) break; // found a valid solution
+            if (hillClimb()) {
+                cout << "Solved in " << attempt << " attempts.\n";
+                return;
+            }
         }
+        cout << "No solution found after " << maxRestarts << " random restarts. Puzzle might be unsolvable.\n";
     }
 
     void printSolution() const {
@@ -157,8 +156,8 @@ int main() {
     };
 
     SudokuSolver solver(puzzle);
-    solver.solve();
-
+    solver.solve(5000);
+    
     cout << "Solved Sudoku:\n";
     solver.printSolution();
 
