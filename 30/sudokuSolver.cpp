@@ -5,23 +5,19 @@ using namespace std;
 
 #define N 9
 
-// Function to check if a number can be placed at board[row][col]
 bool isSafe(vector<vector<int>>& board, int row, int col, int num) {
-    // Check if the number is in the current row
     for (int x = 0; x < N; x++) {
         if (board[row][x] == num) {
             return false;
         }
     }
 
-    // Check if the number is in the current column
     for (int x = 0; x < N; x++) {
         if (board[x][col] == num) {
             return false;
         }
     }
 
-    // Check if the number is in the current 3x3 subgrid
     int startRow = row - row % 3, startCol = col - col % 3;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -34,12 +30,10 @@ bool isSafe(vector<vector<int>>& board, int row, int col, int num) {
     return true;
 }
 
-// Function to solve the Sudoku puzzle using backtracking
 bool solveSudoku(vector<vector<int>>& board) {
     int row, col;
     bool emptyCell = false;
 
-    // Find an empty cell
     for (row = 0; row < N; row++) {
         for (col = 0; col < N; col++) {
             if (board[row][col] == 0) {
@@ -52,30 +46,25 @@ bool solveSudoku(vector<vector<int>>& board) {
         }
     }
 
-    // If there is no empty cell, puzzle is solved
     if (!emptyCell) {
         return true;
     }
 
-    // Try numbers 1-9 in the empty cell
     for (int num = 1; num <= 9; num++) {
         if (isSafe(board, row, col, num)) {
-            board[row][col] = num;  // Assign the number
+            board[row][col] = num;  
 
-            // Recursively try to solve the next empty cell
             if (solveSudoku(board)) {
                 return true;
             }
 
-            // Backtrack if no number fits
             board[row][col] = 0;
         }
     }
 
-    return false;  // Trigger backtracking
+    return false; 
 }
 
-// Function to print the Sudoku board
 void printBoard(const vector<vector<int>>& board) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
