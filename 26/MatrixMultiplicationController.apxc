@@ -32,3 +32,71 @@ public class MatrixMultiplicationController {
         showResult = true;
     }
 }
+
+// public class MatrixMultiplicationController {
+//     public Integer rowsA { get; set; }
+//     public Integer colsA { get; set; }
+//     public Integer rowsB { get; set; }
+//     public Integer colsB { get; set; }
+
+//     public List<List<Integer>> matrixA { get; set; }
+//     public List<List<Integer>> matrixB { get; set; }
+//     public List<List<Integer>> resultMatrix { get; private set; }
+
+//     public Boolean showResult { get; private set; }
+
+//     public MatrixMultiplicationController() {
+//         showResult = false;
+//         matrixA = new List<List<Integer>>();
+//         matrixB = new List<List<Integer>>();
+//         resultMatrix = new List<List<Integer>>();
+//     }
+
+//     public void multiplyMatrices() {
+//         if (colsA != rowsB) {
+//             throw new AuraHandledException('Matrix multiplication not possible: colsA must equal rowsB.');
+//         }
+
+//         resultMatrix = new List<List<Integer>>();
+
+//         for (Integer i = 0; i < rowsA; i++) {
+//             List<Integer> row = new List<Integer>();
+//             for (Integer j = 0; j < colsB; j++) {
+//                 Integer sum = 0;
+//                 for (Integer k = 0; k < colsA; k++) {
+//                     sum += matrixA[i][k] * matrixB[k][j];
+//                 }
+//                 row.add(sum);
+//             }
+//             resultMatrix.add(row);
+//         }
+//         showResult = true;
+//     }
+// }
+
+// MatrixMultiplicationController mmc = new MatrixMultiplicationController();
+
+// mmc.rowsA = 2;
+// mmc.colsA = 3;
+// mmc.rowsB = 3;
+// mmc.colsB = 2;
+
+// // Initialize Matrix A (2x3)
+// mmc.matrixA = new List<List<Integer>> {
+//     new List<Integer>{1, 2, 3},
+//     new List<Integer>{4, 5, 6}
+// };
+
+// // Initialize Matrix B (3x2)
+// mmc.matrixB = new List<List<Integer>> {
+//     new List<Integer>{7, 8},
+//     new List<Integer>{9, 10},
+//     new List<Integer>{11, 12}
+// };
+
+// mmc.multiplyMatrices();
+
+// System.debug('Result Matrix:');
+// for (List<Integer> row : mmc.resultMatrix) {
+//     System.debug(row);
+// }
