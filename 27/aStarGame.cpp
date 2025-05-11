@@ -8,7 +8,7 @@ using namespace std;
 struct Object {
     int width, height, id;
     bool placed;
-    string symbol;  // changed from char to string
+    string symbol; 
 };
 
 struct State {
@@ -16,12 +16,12 @@ struct State {
     vector<Object> objects;
     int usedArea;
 
-    int heuristic(int roomArea) const {
-        return roomArea - usedArea;
+    int heuristic() const {
+        return  - usedArea;
     }
 
     bool operator>(const State& other) const {
-        return heuristic(room.size() * room[0].size()) > other.heuristic(other.room.size() * other.room[0].size());
+        return heuristic() > other.heuristic();
     }
 };
 
